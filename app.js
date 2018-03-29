@@ -14,27 +14,36 @@ var reset = function() {
         guessArray=["          "];
 }
 
+var printIt = function() {
+        document.getElementById("html").innerHTML =
+        "<p>Total Wins: " + wins + "</p>" +
+        "<p>Total Losses: " + losses + "</p>" +
+        "<p>Guesses so far: " + guessArray + "</p>" +
+        "<p>Remaining Guesses: " + guesses + "</p>";
+}
+
 var newletter =function(){
 randomLetter= alphabet[(Math.floor(Math.random()*alphabet.length))];
 console.log(randomLetter);}
 
 newletter();
 console.log("one-time execution?")
-fixit = "<p>Total Wins: " + wins + "</p>" +
-        "<p>Total Losses: " + losses + "</p>" +
-        "<p>Guesses so far: " + guessArray + "</p>" +
-        "<p>Remaining Guesses: " + guesses + "</p>";
+// fixit = "<p>Total Wins: " + wins + "</p>" +
+//         "<p>Total Losses: " + losses + "</p>" +
+//         "<p>Guesses so far: " + guessArray + "</p>" +
+//         "<p>Remaining Guesses: " + guesses + "</p>";
 
 document.onkeyup = function(event) {
     userGuess = event.key;
     guessArray[10-guesses]=userGuess;
     guesses--;
-    document.getElementById("html").innerHTML =
-                "<p>Total Wins: " + wins + "</p>" +
-                "<p>Total Losses: " + losses + "</p>" +
-                "<p>Guesses so far: " + guessArray + "</p>" +
-                "<p>Remaining Guesses: " + guesses + "</p>";
-//     fixit = "<p>Total Wins: " + wins + "</p>" +
+    printIt();
+//     document.getElementById("html").innerHTML =
+//                 "<p>Total Wins: " + wins + "</p>" +
+//                 "<p>Total Losses: " + losses + "</p>" +
+//                 "<p>Guesses so far: " + guessArray + "</p>" +
+//                 "<p>Remaining Guesses: " + guesses + "</p>";
+// //     fixit = "<p>Total Wins: " + wins + "</p>" +
 //             "<p>Total Losses: " + losses + "</p>" +
 //             "<p>Guesses so far: " + guessArray + "</p>" +
 //             "<p>Remaining Guesses: " + guesses + "</p>";   
@@ -45,11 +54,12 @@ if (guesses <= 0){
     reset();
 //    guesses = 10;
 //    guessArray=["          "];
-    document.getElementById("html").innerHTML =
-                "<p>Total Wins: " + wins + "</p>" +
-                "<p>Total Losses: " + losses + "</p>" +
-                "<p>Guesses so far: " + guessArray + "</p>" +
-                "<p>Remaining Guesses: " + guesses + "</p>";
+        printIt();
+//     document.getElementById("html").innerHTML =
+//                 "<p>Total Wins: " + wins + "</p>" +
+//                 "<p>Total Losses: " + losses + "</p>" +
+//                 "<p>Guesses so far: " + guessArray + "</p>" +
+//                 "<p>Remaining Guesses: " + guesses + "</p>";
     newletter();
     console.log("increase losses",losses,"reset",guesses);
     console.log("raw",wins, losses, guesses);
@@ -62,11 +72,12 @@ if (guesses <= 0){
 //        guessArray=["          "];
         newletter();
 //        document.getElementById("html").innerHTML = fixit;
-        document.getElementById("html").innerHTML =
-                "<p>Total Wins: " + wins + "</p>" +
-                "<p>Total Losses: " + losses + "</p>" +
-                "<p>Guesses so far: " + guessArray + "</p>" +
-                "<p>Remaining Guesses: " + guesses + "</p>";
+        // document.getElementById("html").innerHTML =
+        //         "<p>Total Wins: " + wins + "</p>" +
+        //         "<p>Total Losses: " + losses + "</p>" +
+        //         "<p>Guesses so far: " + guessArray + "</p>" +
+        //         "<p>Remaining Guesses: " + guesses + "</p>";
+        printIt();
         console.log(html);
         console.log("raw", wins, losses, guesses);
         console.log("increase", wins, "reset", guesses);  
