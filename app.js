@@ -9,6 +9,11 @@ var losses = 0;
 var guesses = 10;
 var randomLetter =null;
 
+var reset = function() {
+        guesses =10;
+        guessArray=["          "];
+}
+
 var newletter =function(){
 randomLetter= alphabet[(Math.floor(Math.random()*alphabet.length))];
 console.log(randomLetter);}
@@ -37,8 +42,9 @@ document.onkeyup = function(event) {
 if (guesses <= 0){
     console.log("guesses<=0");
     losses++;
-    guesses = 10;
-    guessArray=["          "];
+    reset();
+//    guesses = 10;
+//    guessArray=["          "];
     document.getElementById("html").innerHTML =
                 "<p>Total Wins: " + wins + "</p>" +
                 "<p>Total Losses: " + losses + "</p>" +
@@ -51,8 +57,9 @@ if (guesses <= 0){
 
     else if (randomLetter===userGuess){
         wins++;
-        guesses = 10; 
-        guessArray=["          "];
+        reset();
+//       guesses = 10; 
+//        guessArray=["          "];
         newletter();
 //        document.getElementById("html").innerHTML = fixit;
         document.getElementById("html").innerHTML =
