@@ -10,14 +10,19 @@ var randomLetter =null;
 
 
 
-var newletter =function(){
-randomLetter= alphabet[(Math.floor(Math.random()*alphabet.length))];
+var newLetter =function(){
+randomLetter= alphabet[(Math.floor(Math.random()*alphabet.length))]
+console.log("newletter function: ", randomLetter);
 }
 
-newletter();
+newLetter();
 document.onkeyup = function(event) {
-    prompt("Please enter your guess here:");
-    var userGuess = event.key;
+ //   prompt("Please enter your guess here:");
+    userGuess = event.key;
+    guessArray[10-guesses]=userGuess;
+    guesses--;
+    console.log("inside",guesses, userGuess, guessArray);
+    
     var fixit = "<p>Total Wins: " + wins + "</p>" +
             "<p>Total Losses: " + losses + "</p>" +
             "<p>Guesses so far: " + guessArray + "</p>" +
@@ -27,22 +32,24 @@ if (guesses <= 0){
     losses++;
     guesses = 10;
     guessArray=["          "];
-    newletter();
-
+    console.log("guesses", guesses,"array", guessArray);
+    newLetter();
+    document.getElementById("html").innerHTML = fixit;
+}
 
     else if (randomLetter===userGuess){
         wins++;
         guesses = 10; 
         guessArray=["          "];
-        newletter();
+        newLetter();
         document.getElementById("html").innerHTML = fixit;
     }
         else {
-        guesses--;
-        guessArray[9-guesses]=userGuess;
+
+        document.getElementById("html").innerHTML = fixit; 
+
         // replace document.querySelector("#html").innerHTML = fixit;
 
-        document.getElementById("html").innerHTML = fixit;
 
     }
 };
